@@ -1,7 +1,5 @@
 package de.gymolching.fsb.maths;
 
-import de.gymolching.fsb.maths.test.Vector3;
-
 public class Matrix3 {
 	public double[] elements;
 
@@ -16,6 +14,19 @@ public class Matrix3 {
 		for (int i = 0; i < this.elements.length; i++) {
 			this.elements[i] = 0.0;
 		}
+	}
+
+	/**
+	 * Creates Matrix with specific diagonal value
+	 * 
+	 * @param diagonal
+	 */
+	public Matrix3(double diagonal) {
+		this();
+
+		this.elements[0] = diagonal;
+		this.elements[4] = diagonal;
+		this.elements[8] = diagonal;
 	}
 
 	/**
@@ -86,5 +97,50 @@ public class Matrix3 {
 			System.out.println("");
 		}
 		System.out.println("}");
+	}
+
+	/**
+	 * Creates new Rotation matrix
+	 * 
+	 * @param rotX
+	 *            rotation angle around x axis in radians
+	 * @param rotY
+	 *            "
+	 * @param rotZ
+	 *            "
+	 * 
+
+	 */
+	public static Matrix3 getRotationMatrix(double rotX, double rotY,
+			double rotZ) {
+		Matrix3 matRotX = new Matrix3(1.0);
+		Matrix3 matRotY = new Matrix3(1.0);
+		Matrix3 matRotZ = new Matrix3(1.0);
+
+		double cosX = Math.cos(rotX);
+		double sinX = Math.sin(rotX);
+
+		double cosY = Math.cos(rotY);
+		double sinY = Math.sin(rotY);
+
+		double cosZ = Math.cos(rotZ);
+		double sinZ = Math.sin(rotZ);
+
+		matRotX.elements[1 + 1 * 3] = +cosX;
+		matRotX.elements[1 + 2 * 3] = -sinX;
+		matRotX.elements[2 + 1 * 3] = +sinX;
+		matRotX.elements[2 + 2 * 3] = +cosX;
+
+		matRotY.elements[0 + 0 * 3] = +cosY;
+		matRotY.elements[0 + 2 * 3] = +sinY;
+		matRotY.elements[2 + 0 * 3] = -sinY;
+		matRotY.elements[2 + 2 * 3] = +cosY;
+
+		matRotZ.elements[0 + 0 * 3] = +cosZ;
+		matRotZ.elements[1 + 0 * 3] = +sinZ;
+		matRotZ.elements[0 + 1 * 3] = -sinZ;
+		matRotZ.elements[1 + 1 * 3] = +cosZ;
+
+		return matRotX.multiply(matRotY.multiply(matRotZ));
 	}
 }
