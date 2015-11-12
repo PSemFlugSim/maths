@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/de/gymolching/fsb/api/FSBPosition.java</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/git/networkProtocol/src/de/gymolching/fsb/api/FSBPosition.java</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -8,6 +8,12 @@ public class Vector3 {
 		this.y = y;
 		this.z = z;
 	}
+	
+	public void  invert(){
+		this.x = -this.x;
+		this.y = -this.y;
+		this.z = -this.z;
+	}
 
 	public double getLength() {
 		return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
