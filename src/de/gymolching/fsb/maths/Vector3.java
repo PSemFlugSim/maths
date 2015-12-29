@@ -9,14 +9,12 @@ public class Vector3 {
 		this.z = z;
 	}
 
-	public void invert() {
-		this.x = -this.x;
-		this.y = -this.y;
-		this.z = -this.z;
-	}
-
 	public double getLength() {
 		return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+	}
+
+	public Vector3 invert() {
+		return new Vector3(-this.x, -this.y, -this.z);
 	}
 
 	public Vector3 add(Vector3 vector) {
